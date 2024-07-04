@@ -1,8 +1,7 @@
 package com.francis.alibaba.controller;
 
+import com.francis.alibaba.dto.MaterialDTO;
 import com.francis.alibaba.service.impl.MaterialService;
-import com.francis.common.Dto.MaterialDTO;
-import com.francis.common.Dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

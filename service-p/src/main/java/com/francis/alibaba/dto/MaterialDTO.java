@@ -1,6 +1,6 @@
-package com.example.dto;
+package com.francis.alibaba.dto;
 
-import entity.User;
+import com.francis.alibaba.entity.User;
 import lombok.Data;
 
 import java.io.Serializable;

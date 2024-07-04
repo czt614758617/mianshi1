@@ -1,9 +1,7 @@
 package com.francis.alibaba.service.impl;
-
-
 import com.francis.alibaba.dao.MaterialRepository;
+import com.francis.alibaba.dto.MaterialDTO;
 import com.francis.alibaba.entity.Material;
-import com.francis.common.Dto.MaterialDTO;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

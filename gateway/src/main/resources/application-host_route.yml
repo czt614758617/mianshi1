@@ -1,0 +1,10 @@
+# 源码： HostRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: host_route
+          uri: lb://test
+          predicates:
+            - Host=**localhost**
+# Host 能匹配 localhost 的能被正常转发

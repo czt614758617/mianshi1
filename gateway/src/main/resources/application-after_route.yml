@@ -1,0 +1,10 @@
+# 源码： AfterRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: after_route
+          uri: lb://test
+          predicates:
+            - After=2021-12-16T15:53:22.999+08:00[Asia/Shanghai]
+# 请求时间在 2021-12-16 15:53:22 之后的能被正常转发

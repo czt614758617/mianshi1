@@ -1,0 +1,94 @@
+server:
+  port: 8088
+spring:
+  profiles:
+    #active: after_route
+    #active: before_route
+    #active: between_route
+    #active: cookie_route
+    #active: header_route
+    #active: host_route
+    active: method_route
+    #active: path_route
+    #active: query_route
+    #active: remoteaddr_route
+    #active: weight_route
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lower-case-service-id: true
+          enabled: false
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"  #允许所有ip跨域访问
+            allowedMethods: "*"  #允许所有请求方式
+            allowedHeaders: "*"  #允许任何头进行跨域
+            allowCredentials: true #允许携带cookie
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        enabled: true
+        server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        client-ip: localhost
+      datasource:
+        flow:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-flow-rules
+            groupId: SENTINEL_GROUP
+            # 规则类型，取值见：
+            # org.springframework.cloud.alibaba.sentinel.datasource.RuleType
+            rule-type: flow
+        degrade:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: SENTINEL_GROUP
+            rule-type: degrade
+        system:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-system-rules
+            groupId: SENTINEL_GROUP
+            rule-type: system
+        authority:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-authority-rules
+            groupId: SENTINEL_GROUP
+            rule-type: authority
+        param-flow:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-param-flow-rules
+            groupId: SENTINEL_GROUP
+            rule-type: param-flow
+        gw-flow:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-gw-rules
+            groupId: SENTINEL_GROUP
+            rule-type: gw-flow
+        gw-api-group:
+          nacos:
+            server-addr: localhost:8848
+            dataId: ${spring.application.name}-gw-api-rules
+            groupId: SENTINEL_GROUP
+            rule-type: gw-api-group
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always

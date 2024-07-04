@@ -1,0 +1,10 @@
+# 源码： MethodRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: method_route
+          uri: lb://test
+          predicates:
+            - Method=GET,HEAD
+# 请求方法为 GET 和 HEAD 的能被正常转发

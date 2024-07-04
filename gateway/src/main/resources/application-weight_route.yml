@@ -1,0 +1,14 @@
+# 源码： WeightRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: weight_high
+          uri: http://localhost:8090/
+          predicates:
+            - Weight=group1, 8
+        - id: weight_low
+          uri: http://localhost:8091/
+          predicates:
+            - Weight=group1, 2
+# 大约80%的流量转发到8090服务，大约20%的服务转发到8091服务

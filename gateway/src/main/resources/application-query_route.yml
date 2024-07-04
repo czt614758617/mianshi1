@@ -1,0 +1,10 @@
+# 源码： QueryRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: query_route
+          uri: lb://test
+          predicates:
+            - Query=name, fra.
+# 请求参数包含name，且类似 fran/frac 这种能被正常转发

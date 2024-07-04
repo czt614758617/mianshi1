@@ -1,0 +1,10 @@
+# 源码： HeaderRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: header_route
+          uri: lb://test
+          predicates:
+            - Header=X-Request-Id, \d+
+# 请求头中X-Request-Id为数字的能被正常转发

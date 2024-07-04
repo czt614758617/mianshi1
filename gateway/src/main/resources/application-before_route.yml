@@ -1,0 +1,10 @@
+# 源码： BeforeRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: before_route
+          uri: lb://test
+          predicates:
+            - Before=2021-12-16T15:53:22.999+08:00[Asia/Shanghai]
+# 请求之间在 2021-12-16 15:53:22.999 之前的能被正常转发

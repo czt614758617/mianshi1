@@ -1,0 +1,10 @@
+# 源码： BetweenRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: between_route
+          uri: lb://test
+          predicates:
+            - Between=2020-01-20T17:42:47.789[Asia/Shanghai], 2021-01-31T17:42:47.789[Asia/Shanghai]
+# 请求时间在 2020-01-20 17:42:47 和 2021-01-31 17:42:47 之间能被正常转发

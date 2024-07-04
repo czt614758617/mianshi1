@@ -1,0 +1,13 @@
+# 源码： CookieRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: cookie_route
+          uri: lb://test
+          predicates:
+            - Cookie=name, francis
+          # Cookie 中包含 name=francis 的能被正常转发
+          filters:
+            - AddRequestHeader=token, francis
+          # 请求头中添加token属性

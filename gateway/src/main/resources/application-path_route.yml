@@ -1,0 +1,10 @@
+# 源码： PathRoutePredicateFactory
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: path_route
+          uri: lb://test
+          predicates:
+            - Path=/test/gateway/**
+# URI 以/test/gateway/ 开头的能被正常转发
